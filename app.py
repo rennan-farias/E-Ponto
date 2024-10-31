@@ -9,6 +9,7 @@ app.secret_key = os.getenv('FLASK_SECRET_KEY', 'default_key')
 # Simulação de banco de dados
 usuarios = {
     '12345': 'senha123',
+    '01578575': '01578575'
 }
 
 pontos_registrados = {}  # Dicionário para armazenar registros de pontos
@@ -67,6 +68,19 @@ def esqueci_minha_senha():
         return redirect(url_for('esqueci_minha_senha'))
     
     return render_template('esqueci_minha_senha.html')
+
+@app.route('/cadastrar-usuario', methods=['GET', 'POST'])
+def cadastrar_usuario():
+    if request.method == 'POST':
+        matricula = request.form['matricula']
+        senha = request.form['senha']
+        
+        # Adiciona a nova matrícula e senha ao dicionário de usuários
+        usuarios[matricula] = senha
+        flash('Usuário cadastrado com sucesso!')
+        return redirect(url_for('login'))
+
+    return render_template('cadastrar_usuario.html')  # Certifique-se de que o template existe
 
 @app.route('/registrar-ponto/<matricula>', methods=['GET', 'POST'])
 def registrar_ponto(matricula):
