@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import requests
 import os
-from datetime import datetime  # Importar datetime para capturar a data e hora atual
 
 app = Flask(__name__)
-app.secret_key = os.getenv('FLASK_SECRET_KEY', 'default_key')
+app.secret_key = os.getenv('FLASK_SECRET_KEY', '9cfbfd3e2cd8d4d14c6b7c151ecf374e')  # Altere para sua chave secreta
 
 # Simulação de banco de dados
 usuarios = {
