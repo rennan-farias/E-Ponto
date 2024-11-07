@@ -5,6 +5,7 @@ import os
 import requests
 import random
 import string
+from datetime import datetime, timedelta
 
 # Inicialização do Flask
 app = Flask(__name__)
@@ -28,6 +29,17 @@ app.config['MAIL_DEFAULT_SENDER'] = 'seu_email@gmail.com'  # E-mail de envio
 db = SQLAlchemy(app)
 mail = Mail(app)
 
+class TokenRecuperacao(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email_usuario = db.Column(db.String(120), db.ForeignKey('usuario.email'), nullable=False)
+    token = db.Column(db.String(120), unique=True, nullable=False)
+    data_criacao = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    data_expiracao = db.Column(db.DateTime, nullable=False)
+
+# Método para verificar se o token está expirado
+def is_expirado(self):
+    return datetime.utcnow() > self.data_expiracao
+
 # Modelo de Usuário (tabela de usuários no banco)
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -48,6 +60,49 @@ class RegistroPonto(db.Model):
     matricula_usuario = db.Column(db.String(80), db.ForeignKey('usuario.matricula'), nullable=False)
     data_hora = db.Column(db.String(120), nullable=False)
     localizacao = db.Column(db.String(200), nullable=False)
+
+@app.route('/esqueci-minha-senha', methods=['GET', 'POST'])
+def esqueci_minha_senha():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        
+        # Verificar se o e-mail existe no banco de dados
+        usuario = Usuario.query.filter_by(email=email).first()
+        if usuario:
+            # Gerar um token de recuperação temporário
+            token = ''.join(random.choices(string.ascii_letters + string.digits, k=32))
+            # Definir a data de expiração para 1 hora a partir da criação
+            data_expiracao = datetime.utcnow() + timedelta(hours=1)
+            
+            # Armazenar o token no banco de dados
+            novo_token = TokenRecuperacao(
+                email_usuario=email,
+                token=token,
+                data_expiracao=data_expiracao
+            )
+            db.session.add(novo_token)
+            db.session.commit()
+
+            # Enviar e-mail com o token de recuperação
+            link_redefinicao = url_for('redefinir_senha', token=token, _external=True)
+            msg = Message(
+                'Recuperação de Senha',
+                recipients=[email]
+            )
+            msg.body = f'Olá, {usuario.nome}. Clique no link abaixo para redefinir sua senha:\n\n'
+            msg.body += f'{link_redefinicao}'
+            
+            try:
+                mail.send(msg)
+                flash('Instruções para recuperação de senha foram enviadas para o seu e-mail.', 'success')
+            except Exception as e:
+                flash(f'Erro ao enviar o e-mail: {str(e)}', 'error')
+        else:
+            flash('E-mail não encontrado.', 'error')
+        
+        return redirect(url_for('esqueci_minha_senha'))
+    
+    return render_template('esqueci_minha_senha.html')
 
 @app.route('/obter-endereco', methods=['POST'])
 def obter_endereco():
@@ -159,36 +214,36 @@ def registrar_ponto(matricula):
 
     return render_template('registrar_ponto.html', matricula=matricula)
 
-# Rota para recuperação de senha
-@app.route('/esqueci-minha-senha', methods=['GET', 'POST'])
-def esqueci_minha_senha():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        
-        # Verificar se o e-mail existe no banco de dados
-        usuario = Usuario.query.filter_by(email=email).first()
-        if usuario:
-            # Gerar um token de recuperação temporário
-            token = ''.join(random.choices(string.ascii_letters + string.digits, k=32))
-
-            # Enviar e-mail com o token de recuperação
-            msg = Message(
-                'Recuperação de Senha',
-                recipients=[email]
-            )
-            msg.body = f'Olá, {usuario.nome}. Clique no link abaixo para redefinir sua senha:\n\n'
-            msg.body += f'http://127.0.0.1:5000/redefinir-senha/{token}'
-            try:
-                mail.send(msg)
-                flash('Instruções para recuperação de senha foram enviadas para o seu e-mail.', 'success')
-            except Exception as e:
-                flash(f'Erro ao enviar o e-mail: {str(e)}', 'error')
-        else:
-            flash('E-mail não encontrado.', 'error')
-        
+@app.route('/redefinir-senha/<token>', methods=['GET', 'POST'])
+def redefinir_senha(token):
+    # Verificar se o token é válido
+    token_recuperacao = TokenRecuperacao.query.filter_by(token=token).first()
+    
+    if not token_recuperacao:
+        flash('Token inválido ou expirado.', 'error')
+        return redirect(url_for('login'))
+    
+    if token_recuperacao.is_expirado():
+        flash('Token expirado. Solicite uma nova recuperação de senha.', 'error')
         return redirect(url_for('esqueci_minha_senha'))
     
-    return render_template('esqueci_minha_senha.html')
+    if request.method == 'POST':
+        nova_senha = request.form.get('nova_senha')
+        # Aqui você pode adicionar validações para a senha, como comprimento mínimo ou complexidade
+        
+        # Encontrar o usuário pelo e-mail do token
+        usuario = Usuario.query.filter_by(email=token_recuperacao.email_usuario).first()
+        if usuario:
+            usuario.senha = nova_senha  # Atualizar a senha
+            db.session.commit()
+            # Remover o token após a utilização
+            db.session.delete(token_recuperacao)
+            db.session.commit()
+
+            flash('Senha redefinida com sucesso!', 'success')
+            return redirect(url_for('login'))
+    
+    return render_template('redefinir_senha.html', token=token)
 
 # Criar o banco de dados antes de iniciar o servidor
 with app.app_context():
