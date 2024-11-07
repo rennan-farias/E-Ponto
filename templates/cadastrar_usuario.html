@@ -4,55 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Usuário</title>
-</head>
-    <meta charset="UTF-8">
-    <title>Recuperar Senha</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #2b2f77;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        color: white;
-    }
-    .container {
-        text-align: center;
-        background-color: #1c1f3f;
-        padding: 20px;
-        border-radius: 10px;
-        max-width: 300px;
-        width: 100%;
-    }
-    input {
-        padding: 10px;
-        margin: 10px 0;
-        width: 100%;
-        border-radius: 5px;
-        border: none;
-    }
-    button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        background-color: #4CAF50;
-        color: white;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: #45a049;
-    }
-    .message {
-        color: #80bfff;
-        margin-top: 10px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2b2f77;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            background-color: #1c1f3f;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            color: #80bfff;
+            margin-top: 10px;
+        }
     </style>
-    </head>
+</head>
 <body>
     <div class="container">
-        <h2>CADASTRAR USUÁRIO</h2>
+        <h2>Cadastre-se</h2>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <div class="error">
@@ -63,8 +60,16 @@
             {% endif %}
         {% endwith %}
         <form method="POST">
-            <input type="text" name="matricula" placeholder="MATRÍCULA" required><br>
-            <input type="password" name="senha" placeholder="SENHA" required><br>
+            <input type="text" name="nome" placeholder="Nome" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="senha" placeholder="Senha" required><br>
+            <input type="text" name="professor" placeholder="Professor/Orientador" required><br>
+            <input type="text" name="matricula" placeholder="Matrícula" required><br>
+            <input type="text" name="endereco_estagio" placeholder="Endereço do Estágio" required><br>
+            <input type="text" name="periodo" placeholder="Período" required><br>
+            <input type="text" name="turma" placeholder="Turma" required><br>
+            <input type="text" name="curso" placeholder="Curso" required><br>
+            <input type="text" name="turno" placeholder="Turno" required><br>
             <button type="submit">Cadastrar</button>
         </form>
         <p><a href="{{ url_for('login') }}">Voltar para Login</a></p>
