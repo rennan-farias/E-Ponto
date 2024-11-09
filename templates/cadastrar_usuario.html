@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Usuário</title>
-    <link rel="stylesheet" href="../static/css/cadastra_usuario.css">
+    <link rel="stylesheet" href="../static/css/cadastrar_usuario.css">
 </head>
     <meta charset="UTF-8">
     <title>Recuperar Senha</title>
@@ -12,7 +12,7 @@
     </head>
 <body>
     <div class="container">
-        <h2>CADASTRAR USUÁRIO</h2>
+        <h2>Cadastre-se</h2>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <div class="error">
@@ -23,8 +23,16 @@
             {% endif %}
         {% endwith %}
         <form method="POST">
-            <input type="text" name="matricula" placeholder="MATRÍCULA" required><br>
-            <input type="password" name="senha" placeholder="SENHA" required><br>
+            <input type="text" name="nome" placeholder="Nome" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="senha" placeholder="Senha" required><br>
+            <input type="text" name="professor" placeholder="Professor/Orientador" required><br>
+            <input type="text" name="matricula" placeholder="Matrícula" required><br>
+            <input type="text" name="endereco_estagio" placeholder="Endereço do Estágio" required><br>
+            <input type="text" name="periodo" placeholder="Período" required><br>
+            <input type="text" name="turma" placeholder="Turma" required><br>
+            <input type="text" name="curso" placeholder="Curso" required><br>
+            <input type="text" name="turno" placeholder="Turno" required><br>
             <button type="submit">Cadastrar</button>
         </form>
         <p><a href="{{ url_for('login') }}">Voltar para Login</a></p>
