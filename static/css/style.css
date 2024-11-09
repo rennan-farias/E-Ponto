@@ -1,38 +1,87 @@
+/* Importando fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Fonte profissional e moderna */
+}
+
+/* Estilo para o body */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #2b2f77;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #2b2f77; /* Cor de fundo principal */
+    color: #ffffff;
+}
+
+/* Título principal */
+h1 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Container de informações do ponto */
+#info-ponto {
+    background-color: rgba(255, 255, 255, 0.9); /* Transparência leve para elegância */
+    color: #2b2f77;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#info-ponto p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+/* Estilo do formulário de registro */
+#form-ponto {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    color: white;
+    width: 100%;
+    max-width: 400px;
 }
 
-.container {
-    text-align: center;
-    background-color: #1c1f3f;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-input {
-    padding: 10px;
-    margin: 10px 0;
-    width: 200px;
-    border-radius: 5px;
-    border: none;
-}
-
-button {
-    padding: 10px 20px;
+/* Botão de registro */
+#form-ponto button[type="button"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffffff;
+    color: #2b2f77;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
-    background-color: #45a049;
+#form-ponto button[type="button"]:hover {
+    background-color: #e1e3ff;
+    transform: translateY(-2px); /* Eleva ligeiramente o botão ao passar o mouse */
+}
+
+/* Efeito de clique no botão */
+#form-ponto button[type="button"]:active {
+    transform: translateY(0); /* Retorna ao estado original ao clicar */
+}
+
+/* Estilos adicionais para responsividade */
+@media (max-width: 400px) {
+    #info-ponto, #form-ponto {
+        width: 90%;
+    }
 }

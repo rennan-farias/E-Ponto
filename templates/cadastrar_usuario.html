@@ -24,16 +24,16 @@
         {% endwith %}
         <form method="POST">
             <input type="text" name="nome" placeholder="Nome" required><br>
+            <input type="text" name="matricula" placeholder="Matrícula" required><br>
             <input type="email" name="email" placeholder="Email" required><br>
             <input type="password" name="senha" placeholder="Senha" required><br>
             <input type="text" name="professor" placeholder="Professor/Orientador" required><br>
-            <input type="text" name="matricula" placeholder="Matrícula" required><br>
-            <input type="text" name="endereco_estagio" placeholder="Endereço do Estágio" required><br>
+            <input type="text" name="curso" placeholder="Curso" required><br>
             <input type="text" name="periodo" placeholder="Período" required><br>
             <input type="text" name="turma" placeholder="Turma" required><br>
-            <input type="text" name="curso" placeholder="Curso" required><br>
             <input type="text" name="turno" placeholder="Turno" required><br>
-            <button type="submit">Cadastrar</button>
+            <input type="text" name="endereco_estagio" placeholder="Endereço do Estágio" required><br>
+            <button type="submit">Cadastrar</button><br>
         </form>
         <p><a href="{{ url_for('login') }}">Voltar para Login</a></p>
     </div>

@@ -1,40 +1,103 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #2b2f77;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Importando fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Estilos básicos */
+* {
     margin: 0;
-    color: white;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Fonte moderna */
 }
+
+/* Estilo para o body */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #2b2f77; /* Cor de fundo principal */
+}
+
+/* Container principal */
 .container {
-    text-align: center;
-    background-color: #1c1f3f;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 300px;
     width: 100%;
+    max-width: 400px;
+    background-color: #ffffff; /* Cor de fundo do formulário */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra suave e profunda */
+    text-align: center;
 }
-input {
+
+/* Título do formulário */
+.container h2 {
+    color: #2b2f77; /* Cor principal para o título */
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Estilo dos campos de entrada */
+.container input[type="email"] {
+    width: 100%;
     padding: 10px;
     margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fd;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Foco nos campos de entrada */
+.container input[type="email"]:focus {
+    border-color: #2b2f77;
+    outline: none;
+    box-shadow: 0 0 5px rgba(43, 47, 119, 0.5); /* Leve sombra azulada no foco */
+}
+
+/* Botão de envio */
+.container button[type="submit"] {
     width: 100%;
-    border-radius: 5px;
-    border: none;
-}
-button {
-    padding: 10px 20px;
+    padding: 12px;
+    background-color: #2b2f77;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil no botão */
 }
-button:hover {
-    background-color: #45a049;
+
+/* Efeito de hover e clique no botão */
+.container button[type="submit"]:hover {
+    background-color: #212565;
 }
-.message {
-    color: #80bfff;
-    margin-top: 10px;
+
+.container button[type="submit"]:active {
+    transform: scale(0.98); /* Efeito de clique */
+}
+
+/* Link para voltar ao login */
+.container p a {
+    color: #2b2f77;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.container p a:hover {
+    text-decoration: underline;
+    color: #212565; /* Cor de destaque no hover */
+}
+
+/* Mensagem de feedback */
+.container .message {
+    background-color: #e7f3fe; /* Fundo azul claro para mensagens de feedback */
+    color: #0c5460; /* Azul escuro para o texto */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar mensagem */
 }
