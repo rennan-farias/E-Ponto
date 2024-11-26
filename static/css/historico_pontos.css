@@ -1,0 +1,87 @@
+/* Estilo para o body */
+body {
+    background: linear-gradient(135deg, #f8f9fd, #dfe3f1); /* Gradiente leve no fundo */
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    transition: background 0.3s ease; /* Transição suave no fundo */
+    padding: 20px; /* Adicionei padding para telas menores */
+}
+
+/* Container principal */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 25px; /* Aumentei o espaçamento interno */
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suave elevação */
+}
+
+/* Efeito de hover no container */
+.container:hover {
+    transform: scale(1.02); /* Aumenta levemente */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+/* Títulos */
+h2 {
+    color: #2b2f77;
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o título */
+    text-transform: uppercase; /* Coloca o texto em maiúsculas */
+    font-size: 1.8em; /* Aumentei o tamanho do título */
+}
+
+/* Estilo da tabela */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra à tabela */
+    overflow: hidden; /* Garante que a borda fique limpa */
+    border-radius: 8px; /* Bordas arredondadas na tabela */
+}
+
+/* Cabeçalho da tabela */
+.table th {
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente no cabeçalho */
+    color: white;
+    font-weight: bold;
+    padding: 10px; /* Maior espaçamento no cabeçalho */
+    text-align: center;
+}
+
+/* Células da tabela */
+.table td {
+    border: 1px solid #ddd;
+    padding: 10px; /* Aumentei o padding */
+    text-align: center;
+    background-color: #f8f9fd; /* Fundo claro */
+    transition: background 0.3s ease; /* Transição suave ao interagir */
+}
+
+/* Linhas alternadas na tabela */
+.table tr:nth-child(even) td {
+    background-color: #eef1f8; /* Fundo mais claro para linhas pares */
+}
+
+/* Hover nas células */
+.table td:hover {
+    background-color: #e1e5f2; /* Destaque ao passar o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px; /* Reduz o padding em telas menores */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Ajusta o tamanho do título */
+    }
+
+    .table th, .table td {
+        font-size: 0.9em; /* Reduz o tamanho do texto na tabela */
+        padding: 8px; /* Ajusta o espaçamento */
+    }
+}

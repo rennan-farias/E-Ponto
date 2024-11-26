@@ -1,0 +1,84 @@
+/* Estilo para o body */
+body {
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente de fundo */
+    color: white;
+    font-family: 'Roboto', sans-serif; /* Fonte moderna */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Centraliza verticalmente o conteúdo */
+    transition: background 0.3s ease; /* Transição suave no fundo */
+}
+
+/* Estilo para o container */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px; /* Aumentei o espaçamento interno */
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+    text-align: center; /* Centraliza texto dentro do container */
+    transition: transform 0.3s ease; /* Efeito de leve elevação */
+}
+
+/* Efeito de hover no container */
+.container:hover {
+    transform: translateY(-5px); /* Move levemente para cima */
+}
+
+/* Títulos */
+h2 {
+    color: #2b2f77;
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+    font-size: 1.5em; /* Tamanho maior para destaque */
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px; /* Aumentei o espaçamento interno */
+    margin: 15px 0; /* Maior espaçamento entre os campos */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fd;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* Foco nos campos de entrada */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #2b2f77; /* Azul no foco */
+    outline: none;
+    box-shadow: 0 0 8px rgba(43, 47, 119, 0.5); /* Sombra leve no foco */
+    transform: scale(1.02); /* Leve aumento no foco */
+}
+
+/* Botão */
+button {
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente no botão */
+    color: white;
+    padding: 12px 25px; /* Botão maior */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra no botão */
+}
+
+/* Efeito de hover no botão */
+button:hover {
+    background: linear-gradient(135deg, #1e2157, #181b4d); /* Gradiente mais escuro */
+    transform: scale(1.05); /* Cresce levemente */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+/* Efeito de clique no botão */
+button:active {
+    transform: scale(0.98); /* Diminui levemente ao clicar */
+}

@@ -245,10 +245,46 @@ def redefinir_senha(token):
     
     return render_template('redefinir_senha.html', token=token)
 
-# Criar o banco de dados antes de iniciar o servidor
-with app.app_context():
-    db.create_all()
+# Rota da Página Inicial
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-# Iniciando a aplicação Flask
-if __name__ == '__main__':
+# 1. Painel Administrativo
+@app.route("/painel-admin")
+def painel_admin():
+    return render_template("painel_admin.html")
+
+# 2. Relatórios
+@app.route("/relatorios")
+def relatorios():
+    return render_template("relatorios.html")
+
+# 3. Configurações de Perfil
+@app.route("/configuracoes-perfil", methods=["GET", "POST"])
+def configuracoes_perfil():
+    if request.method == "POST":
+        # Aqui você pode processar a atualização do perfil
+        nome = request.form.get("nome")
+        email = request.form.get("email")
+        # Faça algo com essas informações (salvar no banco, por exemplo)
+        return "Informações atualizadas com sucesso!"
+    return render_template("configuracoes_perfil.html")
+
+# 4. Histórico de Pontos
+@app.route("/historico-pontos")
+def historico_pontos():
+    # Aqui você pode buscar o histórico do banco de dados e enviar para o template
+    historico = [
+        {"data": "2024-11-01", "horario": "08:00", "local": "Escritório A"},
+        {"data": "2024-11-02", "horario": "13:00", "local": "Escritório B"}
+    ]
+    return render_template("historico_pontos.html", historico=historico)
+
+# 5. Tela de Erro 404
+@app.errorhandler(404)
+def pagina_nao_encontrada(e):
+    return render_template("404.html"), 404
+
+if __name__ == "__main__":
     app.run(debug=True)
