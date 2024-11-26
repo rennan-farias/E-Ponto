@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="../static/css/estilo.css">
+</head>
+<body>
+    <h1>Histórico de Pontos</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Local</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in historico %}
+                <tr>
+                    <td>{{ registro.data }}</td>
+                    <td>{{ registro.horario }}</td>
+                    <td>{{ registro.local }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <nav>
+        <a href="/">Início</a> |
+        <a href="/painel-admin">Painel Administrativo</a> |
+        <a href="/relatorios">Relatórios</a> |
+        <a href="/configuracoes-perfil">Configurações de Perfil</a> |
+        <a href="/historico-pontos">Histórico de Pontos</a>
+    </nav>
+    
+    <div class="container">
+        <h2>Histórico de Pontos</h2>
+        <p>Consulte aqui os horários e locais registrados:</p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Horário</th>
+                    <th>Local</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for registro in historico %}
+                <tr>
+                    <td>{{ registro.data }}</td>
+                    <td>{{ registro.horario }}</td>
+                    <td>{{ registro.local }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/">Voltar para Página Inicial</a>
+    </div>
+    
+</body>
+</html>

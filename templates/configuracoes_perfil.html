@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="../static/css/estilo.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Início</a> |
+        <a href="/painel-admin">Painel Administrativo</a> |
+        <a href="/relatorios">Relatórios</a> |
+        <a href="/configuracoes-perfil">Configurações de Perfil</a> |
+        <a href="/historico-pontos">Histórico de Pontos</a>
+    </nav>
+        
+    <div class="container">
+        <h2>Configurações de Perfil</h2>
+        <form method="POST">
+            <input type="text" name="nome" placeholder="Atualizar Nome" required>
+            <input type="email" name="email" placeholder="Atualizar Email" required>
+            <input type="password" name="senha" placeholder="Atualizar Senha" required>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+        <a href="/">Voltar para Página Inicial</a>
+    </div>
+    
+</body>
+</html>

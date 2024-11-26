@@ -79,6 +79,24 @@ h1 {
     transform: translateY(0); /* Retorna ao estado original ao clicar */
 }
 
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff; /* Branco */
+    font-weight: bold;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffffff; /* Azul mais escuro no hover */
+}
+
+
 /* Estilos adicionais para responsividade */
 @media (max-width: 400px) {
     #info-ponto, #form-ponto {
