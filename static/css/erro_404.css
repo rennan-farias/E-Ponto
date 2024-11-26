@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #2b2f77;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #c9c9ff;
+}

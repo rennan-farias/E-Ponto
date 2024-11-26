@@ -1,0 +1,35 @@
+body {
+    background-color: #f8f9fd;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #2b2f77;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #2b2f77;
+    color: white;
+}
