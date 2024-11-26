@@ -16,35 +16,46 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #2b2f77; /* Cor de fundo principal */
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente de fundo */
     color: #ffffff;
+    transition: background 0.3s ease; /* Transição suave no fundo */
 }
 
 /* Título principal */
 h1 {
     color: #ffffff;
     margin-bottom: 20px;
-    font-size: 2em;
+    font-size: 2.5em; /* Aumentei o tamanho do título */
     text-align: center;
     font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
 }
 
 /* Container de informações do ponto */
 #info-ponto {
-    background-color: rgba(255, 255, 255, 0.9); /* Transparência leve para elegância */
+    background: rgba(255, 255, 255, 0.9); /* Transparência leve */
     color: #2b2f77;
     border-radius: 8px;
-    padding: 20px;
+    padding: 25px; /* Aumentei o espaçamento interno */
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
     margin-bottom: 20px;
     text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito suave */
 }
 
+/* Efeito de hover no container */
+#info-ponto:hover {
+    transform: scale(1.02); /* Leve aumento */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+/* Texto dentro do container */
 #info-ponto p {
-    font-size: 1em;
-    margin: 10px 0;
+    font-size: 1.1em; /* Aumentei o tamanho do texto */
+    margin: 12px 0;
+    line-height: 1.5; /* Espaçamento entre linhas */
 }
 
 /* Estilo do formulário de registro */
@@ -58,48 +69,57 @@ h1 {
 /* Botão de registro */
 #form-ponto button[type="button"] {
     width: 100%;
-    padding: 12px;
-    background-color: #ffffff;
+    padding: 14px; /* Botão maior */
+    background: linear-gradient(135deg, #ffffff, #e1e3ff); /* Gradiente no botão */
     color: #2b2f77;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra no botão */
 }
 
+/* Hover no botão */
 #form-ponto button[type="button"]:hover {
-    background-color: #e1e3ff;
-    transform: translateY(-2px); /* Eleva ligeiramente o botão ao passar o mouse */
+    background: linear-gradient(135deg, #e1e3ff, #d1d4ff); /* Gradiente mais claro */
+    transform: translateY(-2px); /* Elevação */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
 }
 
-/* Efeito de clique no botão */
+/* Clique no botão */
 #form-ponto button[type="button"]:active {
-    transform: translateY(0); /* Retorna ao estado original ao clicar */
+    transform: translateY(0); /* Retorna ao estado original */
 }
 
+/* Navegação */
 nav {
     margin: 20px 0;
     text-align: center;
 }
 
+/* Links de navegação */
 nav a {
     text-decoration: none;
     color: #ffffff; /* Branco */
     font-weight: bold;
     margin: 0 10px;
     transition: color 0.3s ease;
+    text-transform: uppercase; /* Letras maiúsculas */
 }
 
+/* Hover nos links */
 nav a:hover {
-    color: #ffffff; /* Azul mais escuro no hover */
+    color: #c9c9ff; /* Branco com leve tom azulado */
 }
 
-
-/* Estilos adicionais para responsividade */
+/* Responsividade */
 @media (max-width: 400px) {
     #info-ponto, #form-ponto {
         width: 90%;
+    }
+
+    h1 {
+        font-size: 2em; /* Ajusta o tamanho do título em telas menores */
     }
 }

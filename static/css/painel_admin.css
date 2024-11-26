@@ -1,42 +1,90 @@
 /* Estilo Geral */
 body {
-    background-color: #2b2f77;
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente de fundo */
     color: white;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    transition: background 0.3s ease; /* Transição suave no fundo */
 }
 
+/* Container principal */
 .container {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 25px; /* Aumentei o espaçamento interno */
     background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suave elevação */
 }
 
+/* Efeito de hover no container */
+.container:hover {
+    transform: scale(1.02); /* Leve aumento */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+/* Títulos */
 h2 {
     color: #2b2f77;
     margin-bottom: 20px;
+    text-align: center; /* Centraliza o título */
+    text-transform: uppercase; /* Texto em maiúsculas */
+    font-size: 1.8em; /* Aumentei o tamanho */
 }
 
+/* Estilo da tabela */
 .table {
     width: 100%;
     border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adicionei uma sombra à tabela */
+    overflow: hidden; /* Garante bordas limpas */
+    border-radius: 8px; /* Bordas arredondadas */
 }
 
-.table th, .table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
+/* Cabeçalho da tabela */
 .table th {
-    background-color: #2b2f77;
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente no cabeçalho */
     color: white;
+    font-weight: bold;
+    padding: 10px; /* Maior espaçamento no cabeçalho */
+    text-align: left;
+    text-transform: uppercase; /* Letras maiúsculas */
 }
 
-.table tr:nth-child(even) {
-    background-color: #f2f2f2;
+/* Células da tabela */
+.table td {
+    border: 1px solid #ddd;
+    padding: 10px; /* Aumentei o padding */
+    text-align: left;
+    background-color: #f8f9fd; /* Fundo claro */
+    color: #333; /* Cor do texto */
+    transition: background 0.3s ease; /* Transição suave ao interagir */
+}
+
+/* Linhas alternadas na tabela */
+.table tr:nth-child(even) td {
+    background-color: #eef1f8; /* Fundo mais claro para linhas pares */
+}
+
+/* Hover nas células */
+.table td:hover {
+    background-color: #e1e5f2; /* Destaque ao passar o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px; /* Reduz o padding em telas menores */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Ajusta o tamanho do título */
+    }
+
+    .table th, .table td {
+        font-size: 0.9em; /* Reduz o tamanho do texto na tabela */
+        padding: 8px; /* Ajusta o espaçamento */
+    }
 }

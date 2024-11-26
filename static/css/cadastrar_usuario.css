@@ -15,7 +15,9 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #2b2f77; /* Cor de fundo principal */
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente de fundo */
+    color: #ffffff; /* Texto branco para contraste */
+    transition: background 0.3s ease; /* Transição suave no fundo */
 }
 
 /* Container principal */
@@ -24,9 +26,15 @@ body {
     max-width: 400px;
     background-color: #ffffff; /* Cor de fundo do formulário */
     border-radius: 8px;
-    padding: 20px;
+    padding: 25px; /* Aumentei o espaçamento interno */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais suave e profunda */
     text-align: center;
+    transition: transform 0.3s ease; /* Suave movimento ao passar o mouse */
+}
+
+/* Efeito de hover no container */
+.container:hover {
+    transform: translateY(-5px); /* Elevação leve */
 }
 
 /* Título do formulário */
@@ -41,13 +49,13 @@ body {
 .container input[type="email"],
 .container input[type="password"] {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 12px; /* Aumentei o espaçamento interno */
+    margin: 15px 0; /* Mais espaçamento entre os campos */
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f8f9fd;
     color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 /* Foco nos campos de entrada */
@@ -56,26 +64,29 @@ body {
 .container input[type="password"]:focus {
     border-color: #2b2f77;
     outline: none;
-    box-shadow: 0 0 5px rgba(43, 47, 119, 0.5); /* Leve sombra azulada no foco */
+    box-shadow: 0 0 8px rgba(43, 47, 119, 0.5); /* Sombra azul mais intensa */
+    transform: scale(1.02); /* Pequeno aumento no foco */
 }
 
 /* Botão de cadastro */
 .container button[type="submit"] {
     width: 100%;
-    padding: 12px;
-    background-color: #2b2f77;
+    padding: 14px; /* Aumentei o tamanho do botão */
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente no botão */
     color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil no botão */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mais visível */
 }
 
 /* Efeito de hover e clique no botão */
 .container button[type="submit"]:hover {
-    background-color: #212565;
+    background: linear-gradient(135deg, #212565, #1a1d48); /* Gradiente mais escuro */
+    transform: scale(1.05); /* Botão cresce levemente */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
 }
 
 .container button[type="submit"]:active {
@@ -87,10 +98,12 @@ body {
     color: #2b2f77;
     text-decoration: none;
     font-size: 0.9em;
+    transition: color 0.3s ease;
 }
 
 .container p a:hover {
     text-decoration: underline;
+    color: #212565; /* Azul mais escuro no hover */
 }
 
 /* Mensagem de erro */

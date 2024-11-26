@@ -1,33 +1,58 @@
+/* Estilo para o body */
 body {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #2b2f77;
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente de fundo */
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif; /* Fonte moderna */
     text-align: center;
+    padding: 20px; /* Espaçamento para telas menores */
+    transition: background 0.3s ease; /* Transição suave no fundo */
 }
 
+/* Container principal */
 .container {
     max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo semitransparente */
+    padding: 30px;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves */
 }
 
+/* Efeito de hover no container */
+.container:hover {
+    transform: scale(1.03); /* Aumenta levemente */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+/* Título */
 h1 {
     font-size: 3rem;
     margin-bottom: 20px;
+    color: #ffffff; /* Mantém o título branco */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao texto */
 }
 
+/* Texto */
 p {
     font-size: 1.2rem;
     margin-bottom: 20px;
+    color: #f0f0f0; /* Texto branco com um leve contraste */
 }
 
+/* Links */
 a {
     color: #ffffff;
     text-decoration: underline;
+    font-weight: bold; /* Deixa o link mais destacado */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transições suaves */
 }
 
+/* Hover no link */
 a:hover {
-    color: #c9c9ff;
+    color: #c9c9ff; /* Azul mais claro no hover */
+    text-shadow: 0 0 8px #c9c9ff; /* Brilho no texto */
 }
