@@ -1,72 +1,70 @@
-/* Estilo para o body */
+/* Importando fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Estilo Geral */
 body {
-    background: linear-gradient(135deg, #f8f9fd, #dfe3f1); /* Gradiente leve no fundo */
-    color: #2b2f77;
-    font-family: 'Roboto', sans-serif; /* Fonte moderna */
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Fundo gradiente */
+    color: #ffffff; /* Texto em branco para contraste */
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    transition: background 0.3s ease; /* Transição suave no fundo */
 }
 
-/* Container principal */
+/* Navegação */
+nav {
+    background: #1e2157; /* Fundo escuro para o menu */
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+nav a {
+    color: #ffffff; /* Links brancos */
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #b3b8ff; /* Cor de destaque ao passar o mouse */
+}
+
+/* Container Principal */
 .container {
     max-width: 800px;
-    margin: 20px auto;
-    padding: 25px; /* Aumentei o espaçamento interno */
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suave elevação */
+    margin: 40px auto;
+    background: #ffffff; /* Fundo branco para destaque */
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Sombra mais evidente */
+    text-align: center; /* Centraliza o texto */
 }
 
-/* Efeito de hover no container */
-.container:hover {
-    transform: scale(1.02); /* Leve aumento */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
-}
-
-/* Títulos */
-h2 {
-    color: #2b2f77;
+.container h2 {
+    color: #2b2f77; /* Cor principal */
+    font-size: 2em;
     margin-bottom: 20px;
     text-transform: uppercase; /* Letras maiúsculas */
-    font-size: 1.8em; /* Aumentei o tamanho */
-    text-align: center; /* Centraliza o título */
+    letter-spacing: 1px; /* Espaçamento entre letras */
 }
 
-/* Gráfico */
-.chart-container {
-    width: 100%;
-    height: 400px;
-    margin-top: 20px;
-    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente no gráfico */
-    border-radius: 8px;
-    color: white;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Adicionei uma sombra ao gráfico */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito suave ao interagir */
-}
-
-/* Hover no gráfico */
-.chart-container:hover {
-    transform: scale(1.03); /* Leve aumento */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+.container p {
+    color: #333; /* Texto com contraste leve */
+    font-size: 1em;
+    line-height: 1.6;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
     .container {
-        padding: 15px; /* Reduz o padding em telas menores */
+        padding: 20px; /* Reduz o padding */
     }
 
-    h2 {
-        font-size: 1.5em; /* Ajusta o tamanho do título */
+    .container h2 {
+        font-size: 1.5em; /* Ajusta tamanho do título */
     }
 
-    .chart-container {
-        height: 300px; /* Ajusta a altura do gráfico */
+    .container p {
+        font-size: 0.9em; /* Reduz o tamanho do texto */
     }
 }

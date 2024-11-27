@@ -274,10 +274,10 @@ def configuracoes_perfil():
 # 4. Histórico de Pontos
 @app.route("/historico-pontos")
 def historico_pontos():
-    # Aqui você pode buscar o histórico do banco de dados e enviar para o template
+    # Aqui você pode buscar o histórico do banco de dados e enviar para o template - quando for fazer usar dia/mês/ano
     historico = [
-        {"data": "2024-11-01", "horario": "08:00", "local": "Escritório A"},
-        {"data": "2024-11-02", "horario": "13:00", "local": "Escritório B"}
+        {"data": "01-11-2024", "horario": "08:00", "local": "Escritório A"},
+        {"data": "08-11-2024", "horario": "13:00", "local": "Escritório B"}
     ]
     return render_template("historico_pontos.html", historico=historico)
 

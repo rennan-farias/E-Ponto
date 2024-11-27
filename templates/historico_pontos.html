@@ -9,25 +9,6 @@
 
 </head>
 <body>
-    <h1>Histórico de Pontos</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Horário</th>
-                <th>Local</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for registro in historico %}
-                <tr>
-                    <td>{{ registro.data }}</td>
-                    <td>{{ registro.horario }}</td>
-                    <td>{{ registro.local }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
     <nav>
         <a href="/">Início</a> |
         <a href="/painel-admin">Painel Administrativo</a> |

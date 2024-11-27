@@ -1,84 +1,124 @@
-/* Estilo para o body */
+/* Importando fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Estilo Geral */
 body {
-    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente de fundo */
-    color: white;
-    font-family: 'Roboto', sans-serif; /* Fonte moderna */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Centraliza verticalmente o conteúdo */
-    transition: background 0.3s ease; /* Transição suave no fundo */
+    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Fundo gradiente */
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* Estilo para o container */
+/* Navegação */
+nav {
+    background: #1e2157; /* Fundo do menu */
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+nav a {
+    color: #ffffff; /* Links brancos */
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #b3b8ff; /* Destaque no hover */
+}
+
+/* Container Principal */
 .container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 25px; /* Aumentei o espaçamento interno */
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
-    text-align: center; /* Centraliza texto dentro do container */
-    transition: transform 0.3s ease; /* Efeito de leve elevação */
+    max-width: 500px;
+    margin: 40px auto;
+    background: #ffffff; /* Fundo branco */
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Sombra elegante */
+    text-align: center; /* Centraliza conteúdo */
 }
 
-/* Efeito de hover no container */
-.container:hover {
-    transform: translateY(-5px); /* Move levemente para cima */
+.container h2 {
+    color: #2b2f77; /* Cor principal */
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Títulos */
-h2 {
-    color: #2b2f77;
-    margin-bottom: 20px; /* Espaçamento abaixo do título */
-    font-size: 1.5em; /* Tamanho maior para destaque */
+/* Estilo do Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre campos */
 }
 
-/* Campos de entrada */
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+form input {
     width: 100%;
-    padding: 12px; /* Aumentei o espaçamento interno */
-    margin: 15px 0; /* Maior espaçamento entre os campos */
+    padding: 12px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f8f9fd;
+    border-radius: 8px;
+    background: #f8f9fd;
     color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Foco nos campos de entrada */
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border-color: #2b2f77; /* Azul no foco */
+form input:focus {
+    border-color: #2b2f77; /* Destaque no foco */
     outline: none;
-    box-shadow: 0 0 8px rgba(43, 47, 119, 0.5); /* Sombra leve no foco */
-    transform: scale(1.02); /* Leve aumento no foco */
+    box-shadow: 0 0 8px rgba(43, 47, 119, 0.5);
 }
 
-/* Botão */
-button {
-    background: linear-gradient(135deg, #2b2f77, #1e2157); /* Gradiente no botão */
-    color: white;
-    padding: 12px 25px; /* Botão maior */
+/* Botão de Salvar Alterações */
+form button {
+    width: 100%;
+    padding: 12px;
+    background: #2b2f77;
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra no botão */
+    text-transform: uppercase;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* Efeito de hover no botão */
-button:hover {
-    background: linear-gradient(135deg, #1e2157, #181b4d); /* Gradiente mais escuro */
-    transform: scale(1.05); /* Cresce levemente */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+form button:hover {
+    background: #212565; /* Cor mais escura no hover */
 }
 
-/* Efeito de clique no botão */
-button:active {
-    transform: scale(0.98); /* Diminui levemente ao clicar */
+form button:active {
+    transform: scale(0.98); /* Leve efeito de clique */
+}
+
+/* Link para voltar */
+.container a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #2b2f77;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.container a:hover {
+    color: #212565; /* Cor de destaque no hover */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .container h2 {
+        font-size: 1.5em;
+    }
+
+    form input, form button {
+        font-size: 0.9em;
+    }
 }
