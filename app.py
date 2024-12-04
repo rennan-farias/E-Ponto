@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, session
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
 import os
@@ -6,6 +7,8 @@ import requests
 import random
 import string
 from datetime import datetime, timedelta
+
+
 
 # Inicialização do Flask
 app = Flask(__name__)
@@ -27,6 +30,7 @@ app.config['MAIL_DEFAULT_SENDER'] = 'seu_email@gmail.com'  # E-mail de envio
 
 # Inicializando o banco de dados e Flask-Mail
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 mail = Mail(app)
 
 class TokenRecuperacao(db.Model):
@@ -46,7 +50,8 @@ class Usuario(db.Model):
     nome = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     senha = db.Column(db.String(120), nullable=False)
-    professor = db.Column(db.String(120), nullable=False)
+    tipo = db.Column(db.String(20), nullable=False)
+    professor = db.Column(db.String(120), nullable=True)
     matricula = db.Column(db.String(80), unique=True, nullable=False)
     endereco_estagio = db.Column(db.String(200), nullable=False)
     periodo = db.Column(db.String(20), nullable=False)
@@ -60,6 +65,8 @@ class RegistroPonto(db.Model):
     matricula_usuario = db.Column(db.String(80), db.ForeignKey('usuario.matricula'), nullable=False)
     data_hora = db.Column(db.String(120), nullable=False)
     localizacao = db.Column(db.String(200), nullable=False)
+
+
 
 @app.route('/esqueci-minha-senha', methods=['GET', 'POST'])
 def esqueci_minha_senha():
@@ -179,6 +186,7 @@ def login():
     if request.method == 'POST':
         matricula = request.form['matricula']
         senha = request.form['senha']
+        session['matricula'] = matricula
 
         # Verifica se a matrícula e a senha estão corretas no banco de dados
         usuario = Usuario.query.filter_by(matricula=matricula).first()
@@ -274,13 +282,23 @@ def configuracoes_perfil():
 # 4. Histórico de Pontos
 @app.route("/historico-pontos")
 def historico_pontos():
-    # Aqui você pode buscar o histórico do banco de dados e enviar para o template - quando for fazer usar dia/mês/ano
-    historico = [
-        {"data": "01-11-2024", "horario": "08:00", "local": "Escritório A"},
-        {"data": "08-11-2024", "horario": "13:00", "local": "Escritório B"}
-    ]
-    return render_template("historico_pontos.html", historico=historico)
+    matricula = session.get('matricula')
+    if not matricula:
+        return "Usuário não autenticado", 401
+    # Buscar registros de ponto para o usuário com a matrícula fornecida
+    registros = RegistroPonto.query.filter_by(matricula_usuario=matricula).all()
 
+    # Formatar os dados para serem exibidos no template
+    historico = [
+        {
+            "data": datetime.strptime(registro.data_hora, "%d/%m/%Y %H:%M:%S").strftime("%d/%m/%Y"),
+            "horario": datetime.strptime(registro.data_hora, "%d/%m/%Y %H:%M:%S").strftime("%H:%M"),
+            "local": registro.localizacao
+        }
+        for registro in registros
+    ]
+
+    return render_template("historico_pontos.html", historico=historico)
 # 5. Tela de Erro 404
 @app.errorhandler(404)
 def pagina_nao_encontrada(e):
@@ -288,3 +306,4 @@ def pagina_nao_encontrada(e):
 
 if __name__ == "__main__":
     app.run(debug=True)
+

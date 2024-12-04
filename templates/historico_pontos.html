@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo</title>
+    <title>Histórico de Pontos</title>
     <link rel="stylesheet" href="../static/css/estilo.css">
     <link rel="stylesheet" href="../static/css/historico_pontos.css">
-
 </head>
 <body>
     <nav>
@@ -14,7 +13,7 @@
         <a href="/painel-admin">Painel Administrativo</a> |
         <a href="/relatorios">Relatórios</a> |
         <a href="/configuracoes-perfil">Configurações de Perfil</a> |
-        <a href="/historico-pontos">Histórico de Pontos</a>
+        <a href="/historico-pontos/{{ matricula }}">Histórico de Pontos</a>
     </nav>
     
     <div class="container">
@@ -29,17 +28,22 @@
                 </tr>
             </thead>
             <tbody>
-                {% for registro in historico %}
-                <tr>
-                    <td>{{ registro.data }}</td>
-                    <td>{{ registro.horario }}</td>
-                    <td>{{ registro.local }}</td>
-                </tr>
-                {% endfor %}
+                {% if historico %}
+                    {% for registro in historico %}
+                    <tr>
+                        <td>{{ registro.data }}</td>
+                        <td>{{ registro.horario }}</td>
+                        <td>{{ registro.local }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3">Nenhum registro encontrado.</td>
+                    </tr>
+                {% endif %}
             </tbody>
         </table>
         <a href="/">Voltar para Página Inicial</a>
     </div>
-    
 </body>
 </html>
